@@ -8,7 +8,8 @@ module.exports = {
   extends: [
     'plugin:vue/vue3-recommended',
     'eslint:recommended',
-    '@vue/standard'
+    '@vue/standard',
+    '@vue/prettier'
   ],
   parserOptions: {
     ecmaVersion: 12,
@@ -18,8 +19,16 @@ module.exports = {
       jsx: true
     }
   },
-  plugins: ['vue', '@typescript-eslint'],
+  plugins: ['vue', '@typescript-eslint', 'prettier'],
   rules: {
-
+    'prettier/prettier': [
+      'warn',
+      {
+        singleQuote: true,
+        semi: false,
+        trailingComma: 'none',
+        endOfLine: 'auto'
+      }
+    ]
   }
 }
