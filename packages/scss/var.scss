@@ -1,0 +1,34 @@
+// 颜色
+$normal:#ffffff;
+$primary:#337ab7;
+$success:#5cb85c;
+$info:#5bc0de;
+$warning:#f0ad4e;
+$danger:#d9534f;
+
+// 描边
+$border-color: #cccccc;
+
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger
+  ),
+  $theme-colors
+);
+
+@each $color, $value in $theme-colors {
+  .bg-#{$color} {
+    background-color: #{$value};
+  }
+  .color-#{$color} {
+    color:  #{$value};
+  }
+  .border-#{$color} {
+    border: 1px solid darken($value, 10%);
+  }
+}
