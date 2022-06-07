@@ -4,7 +4,6 @@ import { resolve } from 'path'
 const pathResolve = (file: string): string => {
   return resolve(__dirname, file)
 }
-// https://vitejs.dev/config/
 export default defineConfig({
   base: './',
   resolve: {
@@ -12,7 +11,9 @@ export default defineConfig({
       '@': pathResolve('src'),
       '@pkg': pathResolve('packages'),
       '@comps': pathResolve('src/components'),
-      '@assets': pathResolve('src/assets')
+      '@assets': pathResolve('src/assets'),
+      find: 'async-validator',
+      replacement: 'node_modules/async-validator/dist-web/index.js'
     }
   },
   css: {

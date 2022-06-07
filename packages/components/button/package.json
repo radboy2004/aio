@@ -1,0 +1,19 @@
+{
+  "name": "aio-theme-button",
+  "umdVarName": "AioThemeButton",
+  "version": "0.1.0",
+  "private": false,
+  "description": "All in one theme: button",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
+  "typings": "dist/index.d.ts",
+  "keyword": "vue3",
+  "license": "MIT",
+  "scripts": {
+    "del": "rimraf dist"
+  },
+  "author": {
+    "name": "radboy2004",
+    "email": "402487515@qq.com"
+  }
+}

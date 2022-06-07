@@ -13,27 +13,27 @@ module.exports = plop => {
     actions: [
       {
         type: 'add',
-        path: 'packages/{{name}}/src/{{name}}.vue',
+        path: 'packages/components/{{name}}/src/{{name}}.vue',
         templateFile: 'plop_templates/src/component.hbs'
       },
       {
         type: 'add',
-        path: 'packages/{{name}}/index.ts',
+        path: 'packages/components/{{name}}/index.ts',
         templateFile: 'plop_templates/index.hbs'
       },
       {
         type: 'add',
-        path: 'packages/{{name}}/package.json',
+        path: 'packages/components/{{name}}/package.json',
         templateFile: 'plop_templates/package.hbs'
       },
       {
         type: 'add',
-        path: 'packages/{{name}}/LICENSE',
+        path: 'packages/components/{{name}}/LICENSE',
         templateFile: 'plop_templates/LICENSE.hbs'
       },
       {
         type: 'add',
-        path: 'packages/{{name}}/README.md',
+        path: 'packages/components/{{name}}/README.md',
         templateFile: 'plop_templates/README.hbs'
       }
     ]

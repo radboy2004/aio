@@ -1,12 +1,10 @@
-// bin/build.js
 const fs = require('fs')
 const path = require('path')
 const { defineConfig, build } = require('vite')
 const vue = require('@vitejs/plugin-vue')
 const vueJsx = require('@vitejs/plugin-vue-jsx')
-
-const entryDir = path.resolve(__dirname, '../packages')
-const outDir = path.resolve(__dirname, '../lib')
+const { startCase } = require('lodash')
+const entryDir = path.resolve(__dirname, '../packages/components')
 
 const baseConfig = defineConfig({
   configFile: false,
@@ -24,24 +22,21 @@ const rollupOptions = {
 }
 const dirConfig = fs
   .readdirSync(entryDir)
-  .filter(
-    item =>
-      fs.statSync(path.resolve(entryDir, item)).isDirectory() && item !== 'scss'
-  )
+  .filter(item => fs.statSync(path.resolve(entryDir, item)).isDirectory())
   .map(item => {
     const pkg = require(path.resolve(entryDir, item, 'package.json'))
-    console.log('pkg', item)
+    console.log('pkg', pkg)
     return {
       lib: {
         entry: path.resolve(entryDir, item, 'index.ts'),
-        name: pkg.umdVarName, // umd的变量名
-        fileName: pkg.name,
+        name: startCase(pkg.name).replace(/ /g, ''), // umd的变量名
+        fileName: 'index',
         formats: ['es', 'umd']
       },
-      outDir: path.resolve(outDir, item)
+      outDir: path.resolve(entryDir, item, 'dist')
     }
   })
-console.log(dirConfig)
+
 dirConfig.forEach(async dirObj => {
   await build({
     ...baseConfig,
